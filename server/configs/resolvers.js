@@ -1,3 +1,5 @@
+const { default: axios } = require("axios");
+
 const resolvers = {
   Query: {
     getTodos: () => {
@@ -19,6 +21,12 @@ const resolvers = {
         },
       ];
     },
+
+    getTodosJSONPlaceholder: async () =>
+      (await axios.get("https://jsonplaceholder.typicode.com/todos")).data,
+
+    getAllUsers: async () =>
+      (await axios.get("https://jsonplaceholder.typicode.com/users")).data,
   },
 };
 

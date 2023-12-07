@@ -1,6 +1,8 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const helmet = require("helmet");
+const compression = require("compression");
 
 const { graphqlServer, server } = require("./graphqlServer");
 const { expressMiddleware } = require("@apollo/server/express4");
@@ -17,6 +19,8 @@ app.use(
 );
 
 app.use(express.json());
+app.use(helmet());
+app.use(compression());
 
 const startServer = async () => {
   await graphqlServer();
